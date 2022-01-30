@@ -373,7 +373,8 @@ int ext2_read(uint32_t ino, void *data, size_t pos, size_t len) {
       uint32_t blk_id = (pos + off) / BLKSIZE;
       uint32_t pos_in_block = (pos + off) % BLKSIZE;
       uint32_t available_in_block = BLKSIZE - pos_in_block;
-      uint32_t to_read = (len - off) < available_in_block ? (len - off) : available_in_block;
+      uint32_t to_read =
+        (len - off) < available_in_block ? (len - off) : available_in_block;
 
       blk_t *blk = blk_get(ino, blk_id);
       if (blk == BLK_ZERO) {
@@ -436,7 +437,7 @@ int ext2_readlink(uint32_t ino, char *buf, size_t buflen) {
     return EINVAL;
   } else {
     int link_len = 0;
-    
+
     if (inode.i_size < EXT2_MAXSYMLINKLEN) {
       memcpy(buf, inode.i_blocks, inode.i_size);
       link_len = inode.i_size;
