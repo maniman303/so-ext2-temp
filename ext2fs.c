@@ -1,6 +1,3 @@
-// Michał Wójtowicz 308248 oświadczam że jestem jedynym autorem kodu źrodłowego
-// (fragmentów w #ifdef STUDENT).
-
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
